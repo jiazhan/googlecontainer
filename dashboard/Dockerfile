@@ -1,4 +1,9 @@
-FROM gcr.io/google_containers/kubernetes-dashboard-amd64:v1.7.1
+FROM ubuntu
 MAINTAINER kvgarnet for Docker
+RUN apt-get update
+RUN apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN echo "root:123456" | chpasswd
+EXPOSE 22
 
 
